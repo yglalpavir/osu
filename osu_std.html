@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>osu!std - LalxaVir</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    
+    <nav class="navbar glass">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-circle-nodes"></i>
+                </div>
+                <span class="logo-text">osu!<span class="logo-highlight">LalxaVir</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="osu_std.html" class="active">osu!std</a>
+                <a href="osu_mania.html">osu!mania</a>
+            </div>
+            <button id="theme-toggle" class="theme-toggle glass" aria-label="切换暗色模式">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main class="content-page fade-in">
+        <div class="page-header slide-up">
+            <div class="page-header-icon">
+                <i class="fas fa-dot-circle"></i>
+            </div>
+            <div class="page-header-text">
+                <h1>osu!std <span class="header-badge">Standard</span></h1>
+                <p>标准模式表现与历史数据追踪</p>
+            </div>
+        </div>
+
+        <div class="view-toggle slide-up">
+            <button class="view-btn active" data-view="list">
+                <i class="fas fa-list-ul"></i> 列表视图
+            </button>
+            <button class="view-btn" data-view="chart">
+                <i class="fas fa-chart-line"></i> 图表视图
+            </button>
+        </div>
+
+        <div id="list-view" class="view-container">
+            <div class="stats-table-container glass slide-up">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="section-icon"><i class="fas fa-table"></i></span>
+                        当前数据总览
+                    </h2>
+                    <span class="section-badge">实时</span>
+                </div>
+                <div class="table-wrapper">
+                    <table class="stats-table">
+                        <thead>
+                            <tr>
+                                <th>指标</th>
+                                <th>数值</th>
+                                <th>趋势</th>
+                            </tr>
+                        </thead>
+                        <tbody id="std-stats-table">
+                            <tr><td colspan="3" class="loading-cell"><div class="loading-spinner"></div> 加载中...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="history-container glass slide-up">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="section-icon"><i class="fas fa-clock-rotate-left"></i></span>
+                        历史记录
+                    </h2>
+                    <span class="section-badge" id="history-count">7条</span>
+                </div>
+                <div id="std-history-list" class="history-list">
+                    <div class="history-item skeleton-item">加载中...</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="chart-view" class="view-container" style="display: none;">
+            <div class="chart-grid">
+                <div class="chart-card glass slide-up">
+                    <div class="chart-header">
+                        <h3 class="chart-title"><i class="fas fa-chart-line"></i> PP 与准确率趋势</h3>
+                        <span class="chart-badge">双轴折线</span>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="pp-acc-chart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-card glass slide-up">
+                    <div class="chart-header">
+                        <h3 class="chart-title"><i class="fas fa-trophy"></i> 排名变化</h3>
+                        <span class="chart-badge">双轴折线</span>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="rank-chart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-card glass slide-up">
+                    <div class="chart-header">
+                        <h3 class="chart-title"><i class="fas fa-gamepad"></i> 游玩与命中统计</h3>
+                        <span class="chart-badge">双轴折线</span>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="plays-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="glass">
+        <div class="footer-content">
+            <p>© 2026 osu!LalxaVir · 基于 GitHub Pages 构建</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadGameData('osu_std.json', 'std-stats-table', 'std-history-list', 'osu!std');
+        });
+    </script>
+</body>
+</html>
