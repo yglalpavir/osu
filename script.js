@@ -364,7 +364,7 @@ function renderAllCharts(data) {
         }
     };
     
-    // PP 与准确率合并图（双轴折线）
+    // PP 与准确率合并图（双轴折线，tension: 0.1）
     const ppAccCtx = document.getElementById('pp-acc-chart');
     if (ppAccCtx) {
         const chart = new Chart(ppAccCtx, {
@@ -379,7 +379,7 @@ function renderAllCharts(data) {
                         backgroundColor: createGradient(ppAccCtx, colors.primary, 0.25, 0.01),
                         borderWidth: 3,
                         fill: true,
-                        tension: 0.4,
+                        tension: 0.1,
                         pointBackgroundColor: colors.primary,
                         pointBorderColor: '#fff',
                         pointBorderWidth: 2,
@@ -394,7 +394,7 @@ function renderAllCharts(data) {
                         backgroundColor: createGradient(ppAccCtx, colors.green, 0.2, 0.01),
                         borderWidth: 3,
                         fill: true,
-                        tension: 0.4,
+                        tension: 0.1,
                         pointBackgroundColor: colors.green,
                         pointBorderColor: '#fff',
                         pointBorderWidth: 2,
@@ -429,7 +429,7 @@ function renderAllCharts(data) {
         window.currentCharts.push(chart);
     }
     
-    // 排名变化图（双轴折线）
+    // 排名变化图（双轴折线，tension: 0）
     const rankCtx = document.getElementById('rank-chart');
     if (rankCtx) {
         const chart = new Chart(rankCtx, {
@@ -444,7 +444,7 @@ function renderAllCharts(data) {
                         backgroundColor: createGradient(rankCtx, colors.primary, 0.2, 0.01),
                         borderWidth: 3,
                         fill: true,
-                        tension: 0.4,
+                        tension: 0,
                         pointBackgroundColor: colors.primary,
                         pointBorderColor: '#fff',
                         pointBorderWidth: 2,
@@ -459,7 +459,7 @@ function renderAllCharts(data) {
                         backgroundColor: createGradient(rankCtx, colors.purple, 0.2, 0.01),
                         borderWidth: 3,
                         fill: true,
-                        tension: 0.4,
+                        tension: 0.1,
                         pointBackgroundColor: colors.purple,
                         pointBorderColor: '#fff',
                         pointBorderWidth: 2,
@@ -492,7 +492,7 @@ function renderAllCharts(data) {
         window.currentCharts.push(chart);
     }
     
-    // 游玩次数与总命中次数（双轴折线）
+    // 游玩次数与总命中次数（双轴折线，tension: 0.1）
     const playsCtx = document.getElementById('plays-chart');
     if (playsCtx) {
         const chart = new Chart(playsCtx, {
@@ -507,7 +507,7 @@ function renderAllCharts(data) {
                         backgroundColor: createGradient(playsCtx, colors.orange, 0.2, 0.01),
                         borderWidth: 3,
                         fill: true,
-                        tension: 0.4,
+                        tension: 0,
                         pointBackgroundColor: colors.orange,
                         pointBorderColor: '#fff',
                         pointBorderWidth: 2,
@@ -522,7 +522,7 @@ function renderAllCharts(data) {
                         backgroundColor: createGradient(playsCtx, colors.red, 0.15, 0.01),
                         borderWidth: 3,
                         fill: true,
-                        tension: 0.4,
+                        tension: 0.1,
                         pointBackgroundColor: colors.red,
                         pointBorderColor: '#fff',
                         pointBorderWidth: 2,
